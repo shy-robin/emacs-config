@@ -55,4 +55,21 @@
 (use-package ace-window)
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
+;; 启用 ivy 模式，替换默认的搜索和选择器
+(use-package ivy)
+(ivy-mode)
+;; 使用 fuzzy matching
+(setq ivy-re-builders-alist
+  '((t . ivy--regex-fuzzy))
+)
+
+(use-package counsel)
+;; 启用 counsel 模式，提供更丰富的命令和功能
+(counsel-mode 1)
+
+;; 使查询以浮动窗口的形式居中展示
+(use-package ivy-posframe)
+(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+(ivy-posframe-mode 1)
+
 (provide 'init-packages)

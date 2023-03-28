@@ -28,6 +28,11 @@
     (apply orig-fn beg end type ?_ args))
 (advice-add 'evil-delete :around 'bb/evil-delete)
 
+;; 按 C-j 和 C-k 在候选列表中上下移动
+(global-unset-key (kbd "C-j"))
+(define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
+(define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
+
 ;; NORMAL mode
 (define-key evil-normal-state-map (kbd "t t") 'new-empty-buffer)
 (define-key evil-normal-state-map (kbd "t w") 'kill-this-buffer)
@@ -47,6 +52,8 @@
 (evil-leader/set-key "sj" 'enlarge-window)
 (evil-leader/set-key "sk" 'shrink-window)
 (evil-leader/set-key "ss" 'ace-select-window)
+
+(evil-leader/set-key "ff" 'counsel-find-file)
 
 ;; INSERT mode
 (define-key evil-insert-state-map (kbd "C-u") 'evil-scroll-up)
