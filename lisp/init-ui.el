@@ -62,7 +62,7 @@
   :init
   :config
   (setq centaur-tabs-style "bar"
-    centaur-tabs-height 20
+    centaur-tabs-height 28
     centaur-tabs-set-icons nil
     centaur-tabs-show-new-tab-button nil
     centaur-tabs-set-modified-marker t

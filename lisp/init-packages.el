@@ -24,9 +24,19 @@
   (global-set-key (kbd "M-p") #'flymake-goto-prev-error))
 
 ;; evil-mode
-(use-package evil)
-;; enable evil-mode
-(evil-mode)
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1)
+)
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init)
+)
 
 ;; which-key
 (use-package which-key)
