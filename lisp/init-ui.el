@@ -2,6 +2,7 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(horizontal-scroll-bar-mode -1)
 
 ;; 主题
 (use-package doom-themes)
@@ -49,17 +50,31 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; 显示图标
-(use-package all-the-icons)
+(use-package
+  all-the-icons
+  :demand t ;; 要求插件在启动时加载，避免延迟加载
+)
 (setq inhibit-compacting-font-caches t) ;; 解决 icon 显示不正常问题
 
 ;; 标签页
-(use-package centaur-tabs)
-(centaur-tabs-mode 1)
-(centaur-tabs-headline-match)
-(setq centaur-tabs-style "bar")
-(setq centaur-tabs-set-bar 'under)
-(setq centaur-tabs-height 32)
-(setq centaur-tabs-set-icons t)
-(setq centaur-tabs-set-modified-marker t)
+(use-package centaur-tabs
+  :demand t
+  :init
+  :config
+  (setq centaur-tabs-style "bar"
+    centaur-tabs-height 20
+    centaur-tabs-set-icons nil
+    centaur-tabs-show-new-tab-button nil
+    centaur-tabs-set-modified-marker t
+    centaur-tabs-show-navigation-buttons nil
+    centaur-tabs-set-bar 'under
+    centaur-tabs-show-count nil
+    centaur-tabs-gray-out-icons nil
+    x-underline-at-descent-line t
+    centaur-tabs-left-edge-margin nil
+  )
+  (centaur-tabs-headline-match)
+  (centaur-tabs-mode t)
+)
 
 (provide 'init-ui)
